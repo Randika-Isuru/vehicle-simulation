@@ -1,5 +1,6 @@
 package com.ncs.vehiclesimulation.service;
 
+import com.ncs.vehiclesimulation.model.BaseVehicle;
 import com.ncs.vehiclesimulation.model.Car;
 import com.ncs.vehiclesimulation.model.Direction;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void setPosition(int x, int y, Direction direction) {
-        this.car = new Car(x, y, direction);
+    public void setPosition(String id, int x, int y, Direction direction, String commands) {
+        this.car = new Car(id, x, y, direction, commands);
     }
 
     @Override

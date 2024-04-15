@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Car extends BaseVehicle{
-    public Car(int x, int y, Direction direction) {
-        super(x, y, direction);
+    public Car(String id, int x, int y, Direction direction, String commands) {
+        super(id, x, y, direction, commands);
     }
 
     public Car(){
