@@ -28,7 +28,6 @@ public class InputValidationAspect {
                 for (Entry<String, String[]> entry : resultMap.entrySet()) {
                     String key = entry.getKey();
                     String[] values = entry.getValue();
-                    boolean isValid = false;
                     validateWithInputs(key, values);
                 }
             } else {
