@@ -33,95 +33,11 @@ public class VehicleSimulationController implements CommandLineRunner {
         Map<String, BaseVehicle> vehicleMap = getVehicleInputs(scanner);
 
         if(!vehicleMap.isEmpty()){
-            moveVehicle(vehicleMap, height, width);
+            String result = carService.moveVehicle(vehicleMap, height, width);
+            System.out.println(result);
         }
 
 
-    }
-
-    private void moveVehicle(Map<String, BaseVehicle> vehicleMap, int height, int width) {
-        Map<Integer, Integer[]> positionsMap = new HashMap<>();
-        int index = 1;
-        for (BaseVehicle car : vehicleMap.values()) {
-            carService.setPosition(car.getId(), car.getX(), car.getY(), car.getDirection(), car.getCommands());
-            for (char command : car.getCommands().toCharArray()) {
-
-                if (command == 'F') {
-                    switch (carService.getDirection()) {
-                        case N -> {
-                            if (carService.getY() + 1 < height) {
-                                carService.moveForward();
-                                positionsMap.put(index, new Integer[]{carService.getX(), carService.getY()});
-                            }
-                        }
-                        case E -> {
-                            if (carService.getX() + 1 < width){
-                                carService.moveForward();
-                                positionsMap.put(index, new Integer[]{carService.getX(), carService.getY()});
-                            }
-                        }
-                        case S -> {
-                            if (carService.getY() - 1 >= 0){
-                                carService.moveForward();
-                                positionsMap.put(index, new Integer[]{carService.getX(), carService.getY()});
-                            }
-                        }
-                        case W -> {
-                            if (carService.getX() - 1 >= 0) {
-                                carService.moveForward();
-                                positionsMap.put(index, new Integer[]{carService.getX(), carService.getY()});
-                            }
-                        }
-                    }
-                } else if (command == 'L') {
-                    carService.rotateLeft();
-                } else if (command == 'R') {
-                    carService.rotateRight();
-                }
-
-                index++;
-            }
-
-            // Output final position and direction
-            if(vehicleMap.values().size() == 1){
-                System.out.println(carService.getX() + " " + carService.getY() + " " + carService.getDirection());
-            }
-
-        }
-        if(vehicleMap.values().size() > 1) {
-            Boolean foundEqualArrays =  checkEqualArrays(positionsMap);
-            if(!foundEqualArrays){
-                System.out.println("no collision");
-            }
-        }
-    }
-
-    private Boolean checkEqualArrays(Map<Integer, Integer[]> positionsMap) {
-        boolean foundEqualArrays = false;
-        for (Map.Entry<Integer, Integer[]> entry1 : positionsMap.entrySet()) {
-            Integer[] array1 = entry1.getValue();
-            foundEqualArrays = positionsMap.entrySet().stream()
-                    .filter(entry2 -> entry1.getKey() < entry2.getKey())
-                    .anyMatch(entry2 -> arraysEqual(array1, entry2.getValue()));
-            if (foundEqualArrays) {
-                System.out.println(Arrays.toString(entry1.getValue()));
-                System.out.println(entry1.getKey());
-                break;
-            }
-        }
-        return foundEqualArrays;
-    }
-
-    private boolean arraysEqual(Integer[] arr1, Integer[] arr2) {
-        if (arr1.length != arr2.length) {
-            return false;
-        }
-        for (int i = 0; i < arr1.length; i++) {
-            if (!arr1[i].equals(arr2[i])) {
-                return false;
-            }
-        }
-        return true;
     }
 
     private Map<String, BaseVehicle> getVehicleInputs(Scanner scanner){
