@@ -31,7 +31,6 @@ public class CarServiceImpl implements CarService {
                 executeCommand(height, width, command);
                 index++;
             }
-            // Output final position and direction
             if(vehicleMap.values().size() == 1){
                 return getX() + " " + getY() + " " + getDirection();
             }

@@ -29,38 +29,7 @@ public class InputValidationAspect {
                     String key = entry.getKey();
                     String[] values = entry.getValue();
                     boolean isValid = false;
-                    switch (key) {
-                        case UserInteractMessage.GET_WIDTH_AND_HEIGHT_MESSAGE -> {
-                            isValid = isValidTwoIntegersInput(values);
-                            if(!isValid){
-                                throw new IllegalArgumentException(UserInteractMessage.GET_WIDTH_AND_HEIGHT_ERROR_MESSAGE);
-                            }
-                        }
-                        case UserInteractMessage.GET_CAR_ID_MESSAGE -> {
-                            isValid = isValidSingleTextInput(values);
-                            if(!isValid){
-                                throw new IllegalArgumentException(UserInteractMessage.GET_CAR_ID_ERROR_MESSAGE);
-                            }
-                        }
-                        case UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE -> {
-                            isValid = isValidTwoIntegersAndDirectionInput(values);
-                            if(!isValid){
-                                throw new IllegalArgumentException(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_ERROR_MESSAGE);
-                            }
-                        }
-                        case UserInteractMessage.GET_MOVE_COMMANDS_MESSAGE -> {
-                            isValid = isValidCommand(values);
-                            if(!isValid){
-                                throw new IllegalArgumentException(UserInteractMessage.GET_MOVE_COMMANDS_ERROR_MESSAGE);
-                            }
-                        }
-                        case UserInteractMessage.GET_CAR_ID_OR_EXIT_MESSAGE -> {
-                            isValid = isValidSingleTextInput(values);
-                            if(!isValid){
-                                throw new IllegalArgumentException(UserInteractMessage.GET_CAR_ID_OR_EXIT_ERROR_MESSAGE);
-                            }
-                        }
-                    }
+                    validateWithInputs(key, values);
                 }
             } else {
                 System.out.println(UserInteractMessage.UNEXPECTED_RESULT_TYPE_ERROR_MESSAGE + result.getClass());
@@ -74,6 +43,42 @@ public class InputValidationAspect {
         }
 
         return result;
+    }
+
+    private void validateWithInputs(String key, String[] values) {
+        boolean isValid;
+        switch (key) {
+            case UserInteractMessage.GET_WIDTH_AND_HEIGHT_MESSAGE -> {
+                isValid = isValidTwoIntegersInput(values);
+                if(!isValid){
+                    throw new IllegalArgumentException(UserInteractMessage.GET_WIDTH_AND_HEIGHT_ERROR_MESSAGE);
+                }
+            }
+            case UserInteractMessage.GET_CAR_ID_MESSAGE -> {
+                isValid = isValidSingleTextInput(values);
+                if(!isValid){
+                    throw new IllegalArgumentException(UserInteractMessage.GET_CAR_ID_ERROR_MESSAGE);
+                }
+            }
+            case UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE -> {
+                isValid = isValidTwoIntegersAndDirectionInput(values);
+                if(!isValid){
+                    throw new IllegalArgumentException(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_ERROR_MESSAGE);
+                }
+            }
+            case UserInteractMessage.GET_MOVE_COMMANDS_MESSAGE -> {
+                isValid = isValidCommand(values);
+                if(!isValid){
+                    throw new IllegalArgumentException(UserInteractMessage.GET_MOVE_COMMANDS_ERROR_MESSAGE);
+                }
+            }
+            case UserInteractMessage.GET_CAR_ID_OR_EXIT_MESSAGE -> {
+                isValid = isValidSingleTextInput(values);
+                if(!isValid){
+                    throw new IllegalArgumentException(UserInteractMessage.GET_CAR_ID_OR_EXIT_ERROR_MESSAGE);
+                }
+            }
+        }
     }
 
     private boolean isValidSingleTextInput(String[] values) {

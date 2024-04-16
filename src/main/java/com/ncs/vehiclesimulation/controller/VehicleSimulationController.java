@@ -13,7 +13,6 @@ import java.util.*;
 
 @Controller
 public class VehicleSimulationController implements CommandLineRunner {
-
     private final CarService carService;
     private final UserInteractionService userInteractionService;
 
@@ -27,25 +26,18 @@ public class VehicleSimulationController implements CommandLineRunner {
         this.carService = carService;
         this.userInteractionService = userInteractionService;
     }
-
     @Override
     public void run(String... args) throws Exception {
 
         try {
             System.out.println(UserInteractMessage.HEADER_MESSAGE);
             Scanner scanner = new Scanner(System.in);
-
-            // Read field dimensions
-            //System.out.print("Enter width and height of the field : ");
             inputs = userInteractionService.getUserInputs(UserInteractMessage.GET_WIDTH_AND_HEIGHT_MESSAGE, scanner);
 
-
-            // String[] fieldDimensions = scanner.nextLine().split(" ");
             for (String[] values : inputs.values()){
                 width = Integer.parseInt(values[0]);
                 height = Integer.parseInt(values[1]);
             }
-
 
             Map<String, BaseVehicle> vehicleMap = getVehicleInputs(scanner);
 
