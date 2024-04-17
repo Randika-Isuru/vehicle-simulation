@@ -12,14 +12,11 @@ import java.util.Map;
 
 @Service
 public class CarServiceImpl implements CarService {
-
     private Car myCar;
     private final CarFactory carFactory;
-
     public CarServiceImpl(CarFactory carFactory) {
         this.carFactory = carFactory;
     }
-
     private final Map<Integer, Integer[]> positionsMap = new HashMap<>();
     private int index = 1;
 
@@ -46,7 +43,6 @@ public class CarServiceImpl implements CarService {
                 return foundEqualArrays.toString();
             }
         }
-
         return "Done";
     }
     private void executeCommand(int height, int width, char command) {
@@ -83,7 +79,6 @@ public class CarServiceImpl implements CarService {
             rotateRight();
         }
     }
-
     private Boolean checkEqualArrays(Map<Integer, Integer[]> positionsMap) {
         boolean foundEqualArrays = false;
         for (Map.Entry<Integer, Integer[]> entry1 : positionsMap.entrySet()) {
@@ -100,9 +95,6 @@ public class CarServiceImpl implements CarService {
         }
         return foundEqualArrays;
     }
-
-
-
     private boolean arraysEqual(Integer[] arr1, Integer[] arr2) {
         if (arr1.length != arr2.length) {
             return false;
@@ -114,39 +106,33 @@ public class CarServiceImpl implements CarService {
         }
         return true;
     }
-
     private void moveForward() {
         if(myCar != null) {
             myCar.moveForward();
         }
     }
-
     private void rotateLeft() {
         if(myCar != null){
             myCar.rotateLeft();
         }
     }
-
     private void rotateRight() {
         if(myCar != null) {
             myCar.rotateRight();
         }
     }
-
     private int getX() {
         if(myCar != null) {
             return myCar.getX();
         }
         return 0;
     }
-
     private int getY() {
         if(myCar != null) {
             return myCar.getY();
         }
         return 0;
     }
-
     private Direction getDirection() {
         if(myCar != null) {
             return myCar.getDirection();

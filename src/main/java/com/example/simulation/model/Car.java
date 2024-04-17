@@ -32,11 +32,9 @@ public class Car extends BaseVehicle{
                 break;
         }
     }
-
     public void rotateLeft() {
         direction = direction.rotateLeft();
     }
-
     public void rotateRight() {
         direction = direction.rotateRight();
     }

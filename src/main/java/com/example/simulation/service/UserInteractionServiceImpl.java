@@ -19,7 +19,6 @@ public class UserInteractionServiceImpl implements UserInteractionService {
         } catch (Exception ex){
             System.out.println(UserInteractMessage.PLEASE_TRY_AGAIN_ERROR_MESSAGE);
         }
-
         return inputMap;
     }
 }

@@ -22,10 +22,8 @@ import java.util.Map.Entry;
 @Aspect
 @Component
 public class InputValidationAspect {
-
     @Pointcut("execution(* com.example.simulation.service.UserInteractionServiceImpl.getUserInputs(..))")
     public void getInputs() {}
-
     @Around("getInputs()")
     public Object interceptScannerNextLine(ProceedingJoinPoint joinPoint) throws Throwable {
         Map<String, String[]> updatedResultMap = new HashMap<>();
@@ -49,10 +47,8 @@ public class InputValidationAspect {
             System.out.println(UserInteractMessage.INVALID_INPUT_ERROR_MESSAGE + ex.getMessage());
             return ex;
         }
-
         return result;
     }
-
     private Map<String, String[]> validateWithInputs(String key, String[] values, Map<String, String[]> updatedResultMap) {
         boolean isValid;
         switch (key) {
@@ -100,11 +96,9 @@ public class InputValidationAspect {
         updatedResultMap.put(key, values);
         return updatedResultMap;
     }
-
     private boolean isValidSingleTextInput(String[] values) {
         return values.length == 1;
     }
-
     private boolean isValidTwoIntegersInput(String[] values) {
         if(values.length == 2){
             boolean allIntegers = true;
@@ -132,12 +126,9 @@ public class InputValidationAspect {
         }
         return false;
     }
-
     private boolean isValidTwoIntegersAndDirectionInput(String[] values) {
-
         boolean firstTwoPositiveIntegers = true;
         boolean thirdMatchesEnum = false;
-
         if(values.length == 3){
             for (int i = 0; i < 2; i++) {
                 try {
@@ -151,14 +142,12 @@ public class InputValidationAspect {
                     break;
                 }
             }
-
             for (Direction value : Direction.values()) {
                 if (value.name().equals(values[2])) {
                     thirdMatchesEnum = true;
                     break;
                 }
             }
-
             if (firstTwoPositiveIntegers && thirdMatchesEnum) {
                 return true;
             } else if (!firstTwoPositiveIntegers) {
@@ -167,10 +156,8 @@ public class InputValidationAspect {
                 return false;
             }
         }
-
         return false;
     }
-
     private boolean isValidCommand(String[] values) {
         char[] charArray = {'F', 'L', 'R'};
         if(values.length == 1){
@@ -188,7 +175,6 @@ public class InputValidationAspect {
         }
         return false;
     }
-
     private boolean contains(char[] array, char c) {
         for (char item : array) {
             if (item == c) {
@@ -197,5 +183,4 @@ public class InputValidationAspect {
         }
         return false;
     }
-
 }

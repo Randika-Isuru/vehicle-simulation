@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CarFactory {
-
     /**
      * Retrieves the final car object.
      *

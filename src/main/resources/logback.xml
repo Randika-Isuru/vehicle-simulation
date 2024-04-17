@@ -1,0 +1,5 @@
+<configuration>
+    <logger name="org.springframework.context" level="WARN"/>
+    <logger name="org.springframework.beans" level="WARN"/>
+    <logger name="org.springframework.aop" level="WARN"/>
+</configuration>
