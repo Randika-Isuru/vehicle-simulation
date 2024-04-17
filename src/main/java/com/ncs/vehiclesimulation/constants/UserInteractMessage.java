@@ -8,6 +8,8 @@ public class UserInteractMessage {
     public static final String GET_MOVE_COMMANDS_MESSAGE = "Enter car move commands : ";
     public static final String GET_CAR_ID_OR_EXIT_MESSAGE = "Enter car Id : ( or enter 'move' to drive your vehicle) ";
 
+    public static final String MULTIPLE_VEHICLE_MOVE_WITHOUT_COLLISION_SUCCESS_MESSAGE = "no collision";
+
     public static final String GET_WIDTH_AND_HEIGHT_ERROR_MESSAGE = "Please enter only 2 positive numbers separate with space";
     public static final String GET_CAR_ID_ERROR_MESSAGE = "Please enter single word to identify the vehicle";
     public static final String GET_CURRENT_POSITION_AND_FACING_DIRECTION_ERROR_MESSAGE = "Invalid input: Please enter only 2 positive numbers separated by a space, and indicate direction with a single character: N, E, S, or W.";

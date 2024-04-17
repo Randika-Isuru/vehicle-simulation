@@ -1,5 +1,6 @@
 package com.ncs.vehiclesimulation.service;
 
+import com.ncs.vehiclesimulation.constants.UserInteractMessage;
 import com.ncs.vehiclesimulation.model.BaseVehicle;
 import com.ncs.vehiclesimulation.model.Car;
 import com.ncs.vehiclesimulation.model.CarFactory;
@@ -40,7 +41,7 @@ public class CarServiceImpl implements CarService {
             }
             Boolean foundEqualArrays =  checkEqualArrays(positionsMap);
             if(!foundEqualArrays){
-                return "no collision";
+                return UserInteractMessage.MULTIPLE_VEHICLE_MOVE_WITHOUT_COLLISION_SUCCESS_MESSAGE;
             } else {
                 return foundEqualArrays.toString();
             }

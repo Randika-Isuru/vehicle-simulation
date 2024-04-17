@@ -26,8 +26,9 @@ public class VehicleSimulationController implements CommandLineRunner {
         this.carService = carService;
         this.userInteractionService = userInteractionService;
     }
+
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         try {
             System.out.println(UserInteractMessage.HEADER_MESSAGE);
@@ -39,7 +40,7 @@ public class VehicleSimulationController implements CommandLineRunner {
                 height = Integer.parseInt(values[1]);
             }
 
-            Map<String, BaseVehicle> vehicleMap = getVehicleInputs(scanner);
+            Map<String, BaseVehicle> vehicleMap = getVehicleCoordinationInputs(scanner);
 
             if(!vehicleMap.isEmpty()){
                 String result = carService.moveVehicle(vehicleMap, height, width);
@@ -53,7 +54,7 @@ public class VehicleSimulationController implements CommandLineRunner {
 
     }
 
-    private Map<String, BaseVehicle> getVehicleInputs(Scanner scanner){
+    private Map<String, BaseVehicle> getVehicleCoordinationInputs(Scanner scanner){
 
         Map<String, BaseVehicle> carData = new HashMap<>();
 

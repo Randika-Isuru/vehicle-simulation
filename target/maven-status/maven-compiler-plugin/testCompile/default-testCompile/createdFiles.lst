@@ -1,0 +1,4 @@
+com/ncs/vehiclesimulation/VehicleSimulationApplicationTests.class
+com/ncs/vehiclesimulation/service/UserInteractionServiceTest.class
+com/ncs/vehiclesimulation/controller/VehicleSimulationControllerTest.class
+com/ncs/vehiclesimulation/service/CarServiceTest.class

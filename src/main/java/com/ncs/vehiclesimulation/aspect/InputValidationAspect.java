@@ -11,6 +11,13 @@ import com.ncs.vehiclesimulation.constants.UserInteractMessage;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * Represents validation aspect in the application.
+ * This will provide functionality for managing all the input validation.
+ *
+ * @author Randika Isuru Vijayanga
+ * @version 1.0
+ */
 @Aspect
 @Component
 public class InputValidationAspect {

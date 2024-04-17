@@ -4,6 +4,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
+/**
+ * Represents a BaseVehicle in the application.
+ * This will provide functionality for managing vehicle information.
+ *
+ * @author Randika Isuru Vijayanga
+ * @version 1.0
+ */
 @Component
 public class BaseVehicle {
     protected String id;
