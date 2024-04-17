@@ -24,7 +24,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public String moveVehicle(Map<String, BaseVehicle> vehicleMap, int height, int width) {
-
         for (BaseVehicle car : vehicleMap.values()) {
             myCar = carFactory.createCar(car.getId(), car.getX(), car.getY(), car.getDirection(), car.getCommands());
             for (char command : car.getCommands().toCharArray()) {
@@ -34,7 +33,6 @@ public class CarServiceImpl implements CarService {
             if(vehicleMap.values().size() == 1){
                 return getX() + " " + getY() + " " + getDirection();
             }
-
         }
         if(vehicleMap.values().size() > 1) {
             for (BaseVehicle car : vehicleMap.values()) {
@@ -50,7 +48,6 @@ public class CarServiceImpl implements CarService {
 
         return "Done";
     }
-
     private void executeCommand(int height, int width, char command) {
         if (command == 'F') {
             switch (getDirection()) {

@@ -11,7 +11,6 @@ public class BaseVehicle {
     protected Integer y;
     protected Direction direction;
     protected String commands;
-
     public BaseVehicle(String id, Integer x, Integer y, Direction direction, String commands) {
         this.id = id;
         this.x = x;
@@ -22,27 +21,21 @@ public class BaseVehicle {
 
     public BaseVehicle() {
     }
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public Integer getX() {
         return x;
     }
-
     public void setX(Integer x) {
         this.x = x;
     }
-
     public Integer getY() {
         return y;
     }
-
     public void setY(Integer y) {
         this.y = y;
     }

@@ -91,7 +91,7 @@ public class InputValidationAspect {
             for (String s : values) {
                 try {
                     int num = Integer.parseInt(s);
-                    if (num <= 0) {
+                    if (num < 0) {
                         allPositiveIntegers = false;
                         break;
                     }
@@ -121,7 +121,7 @@ public class InputValidationAspect {
             for (int i = 0; i < 2; i++) {
                 try {
                     int num = Integer.parseInt(values[i]);
-                    if (num <= 0) {
+                    if (num < 0) {
                         firstTwoPositiveIntegers = false;
                         break;
                     }

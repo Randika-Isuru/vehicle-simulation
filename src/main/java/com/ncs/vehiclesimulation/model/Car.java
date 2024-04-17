@@ -7,11 +7,8 @@ public class Car extends BaseVehicle{
     public Car(String id, int x, int y, Direction direction, String commands) {
         super(id, x, y, direction, commands);
     }
-
     public Car(){
-
     }
-
     public void moveForward() {
         switch (direction) {
             case N:

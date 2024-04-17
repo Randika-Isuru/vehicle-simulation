@@ -7,6 +7,5 @@ import java.util.Map;
 
 
 public interface CarService {
-
     String moveVehicle(Map<String, BaseVehicle> vehicleMap, int height, int width);
 }
