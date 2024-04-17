@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -27,6 +28,7 @@ public class InputValidationAspect {
 
     @Around("getInputs()")
     public Object interceptScannerNextLine(ProceedingJoinPoint joinPoint) throws Throwable {
+        Map<String, String[]> updatedResultMap = new HashMap<>();
         Object result = joinPoint.proceed();
         try {
             if (result instanceof Map) {
@@ -34,8 +36,9 @@ public class InputValidationAspect {
                 for (Entry<String, String[]> entry : resultMap.entrySet()) {
                     String key = entry.getKey();
                     String[] values = entry.getValue();
-                    validateWithInputs(key, values);
+                    updatedResultMap = validateWithInputs(key, values, updatedResultMap);
                 }
+                return updatedResultMap;
             } else {
                 System.out.println(UserInteractMessage.UNEXPECTED_RESULT_TYPE_ERROR_MESSAGE + result.getClass());
             }
@@ -50,40 +53,52 @@ public class InputValidationAspect {
         return result;
     }
 
-    private void validateWithInputs(String key, String[] values) {
+    private Map<String, String[]> validateWithInputs(String key, String[] values, Map<String, String[]> updatedResultMap) {
         boolean isValid;
         switch (key) {
             case UserInteractMessage.GET_WIDTH_AND_HEIGHT_MESSAGE -> {
                 isValid = isValidTwoIntegersInput(values);
                 if(!isValid){
-                    throw new IllegalArgumentException(UserInteractMessage.GET_WIDTH_AND_HEIGHT_ERROR_MESSAGE);
+                    System.out.println(UserInteractMessage.GET_WIDTH_AND_HEIGHT_ERROR_MESSAGE);
+                    updatedResultMap.put("False", values);
+                    return updatedResultMap;
                 }
             }
             case UserInteractMessage.GET_CAR_ID_MESSAGE -> {
                 isValid = isValidSingleTextInput(values);
                 if(!isValid){
-                    throw new IllegalArgumentException(UserInteractMessage.GET_CAR_ID_ERROR_MESSAGE);
+                    System.out.println(UserInteractMessage.GET_CAR_ID_ERROR_MESSAGE);
+                    updatedResultMap.put("False", values);
+                    return updatedResultMap;
                 }
             }
             case UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE -> {
                 isValid = isValidTwoIntegersAndDirectionInput(values);
                 if(!isValid){
-                    throw new IllegalArgumentException(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_ERROR_MESSAGE);
+                    System.out.println(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_ERROR_MESSAGE);
+                    updatedResultMap.put("False", values);
+                    return updatedResultMap;
                 }
             }
             case UserInteractMessage.GET_MOVE_COMMANDS_MESSAGE -> {
                 isValid = isValidCommand(values);
                 if(!isValid){
-                    throw new IllegalArgumentException(UserInteractMessage.GET_MOVE_COMMANDS_ERROR_MESSAGE);
+                    System.out.println(UserInteractMessage.GET_MOVE_COMMANDS_ERROR_MESSAGE);
+                    updatedResultMap.put("False", values);
+                    return updatedResultMap;
                 }
             }
             case UserInteractMessage.GET_CAR_ID_OR_EXIT_MESSAGE -> {
                 isValid = isValidSingleTextInput(values);
                 if(!isValid){
-                    throw new IllegalArgumentException(UserInteractMessage.GET_CAR_ID_OR_EXIT_ERROR_MESSAGE);
+                    System.out.println(UserInteractMessage.GET_CAR_ID_OR_EXIT_ERROR_MESSAGE);
+                    updatedResultMap.put("False", values);
+                    return updatedResultMap;
                 }
             }
         }
+        updatedResultMap.put(key, values);
+        return updatedResultMap;
     }
 
     private boolean isValidSingleTextInput(String[] values) {
