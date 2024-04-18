@@ -1,6 +1,6 @@
 # Vehicle Simulation Application
 
-This is a Java 17 Maven Spring application for simulating vehicle behavior. It allows you to build and run the project 
+This is a Java 17 Maven application for simulating vehicle behavior. It allows you to build and run the project 
 using Maven and Java commands using terminal.
 
 ## Prerequisites

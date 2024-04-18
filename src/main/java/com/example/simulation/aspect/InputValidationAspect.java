@@ -2,11 +2,6 @@ package com.example.simulation.aspect;
 
 import com.example.simulation.constants.UserInteractMessage;
 import com.example.simulation.model.Direction;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,35 +14,38 @@ import java.util.Map.Entry;
  * @author Randika Isuru Vijayanga
  * @version 1.0
  */
-@Aspect
-@Component
 public class InputValidationAspect {
-    @Pointcut("execution(* com.example.simulation.service.UserInteractionServiceImpl.getUserInputs(..))")
-    public void getInputs() {}
-    @Around("getInputs()")
-    public Object interceptScannerNextLine(ProceedingJoinPoint joinPoint) throws Throwable {
+
+    /**
+     * Retrieves the user input and validate those input according to several aspects.
+     *
+     * @param userInputs The Map with String key and String array as value. key contain the displayed message and values
+     * contains the user inputs data.
+     * @return a Map with String key and String array as value. key contain the displayed message or "False" if
+     * the user input is invalid.
+     * String array contains the user input which getting from the console using scanner.
+     *
+     */
+    public Map<String, String[]> interceptScannerNextLine(Map<String, String[]> userInputs){
         Map<String, String[]> updatedResultMap = new HashMap<>();
-        Object result = joinPoint.proceed();
         try {
-            if (result instanceof Map) {
-                Map<String, String[]> resultMap = (Map<String, String[]>) result;
+            if (userInputs != null) {
+                Map<String, String[]> resultMap = (Map<String, String[]>) userInputs;
                 for (Entry<String, String[]> entry : resultMap.entrySet()) {
                     String key = entry.getKey();
                     String[] values = entry.getValue();
-                    updatedResultMap = validateWithInputs(key, values, updatedResultMap);
+                    validateWithInputs(key, values, updatedResultMap);
                 }
                 return updatedResultMap;
             } else {
-                System.out.println(UserInteractMessage.UNEXPECTED_RESULT_TYPE_ERROR_MESSAGE + result.getClass());
+                System.out.println(UserInteractMessage.UNEXPECTED_RESULT_TYPE_ERROR_MESSAGE);
             }
         } catch (IllegalArgumentException iae) {
             System.out.println(UserInteractMessage.INVALID_INPUT_ERROR_MESSAGE + iae.getMessage());
-            return iae;
         } catch (Exception ex) {
             System.out.println(UserInteractMessage.INVALID_INPUT_ERROR_MESSAGE + ex.getMessage());
-            return ex;
         }
-        return result;
+        return userInputs;
     }
     private Map<String, String[]> validateWithInputs(String key, String[] values, Map<String, String[]> updatedResultMap) {
         boolean isValid;

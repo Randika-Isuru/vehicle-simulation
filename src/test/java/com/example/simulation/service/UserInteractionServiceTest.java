@@ -18,7 +18,6 @@ import static org.mockito.Mockito.when;
 class UserInteractionServiceTest {
     @InjectMocks
     UserInteractionServiceImpl userInteractionService;
-
     @Mock
     Scanner scanner;
 

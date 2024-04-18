@@ -6,11 +6,16 @@ import com.example.simulation.service.UserInteractionService;
 import com.example.simulation.model.Car;
 import com.example.simulation.model.Direction;
 import com.example.simulation.service.CarService;
-import org.springframework.stereotype.Controller;
 
 import java.util.*;
 
-@Controller
+/**
+ * Represents a VehicleSimulationController in the application.
+ * This will provide functionality execute the application.
+ *
+ * @author Randika Isuru Vijayanga
+ * @version 1.0
+ */
 public class VehicleSimulationController {
     private final CarService carService;
     private final UserInteractionService userInteractionService;
@@ -59,9 +64,7 @@ public class VehicleSimulationController {
         }
     }
     private Map<String, BaseVehicle> getVehicleCoordinationInputs(Scanner scanner){
-
         Map<String, BaseVehicle> carData = new HashMap<>();
-
         try {
             do{
                 continueOrLoop = false;
@@ -78,7 +81,6 @@ public class VehicleSimulationController {
             for (String[] values : inputs.values()){
                 carId = values[0];
             }
-
             withHere:
             do {
                 continueOrLoop = false;

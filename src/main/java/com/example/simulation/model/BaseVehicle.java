@@ -1,7 +1,5 @@
 package com.example.simulation.model;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Objects;
 
 /**
@@ -11,7 +9,7 @@ import java.util.Objects;
  * @author Randika Isuru Vijayanga
  * @version 1.0
  */
-@Component
+
 public class BaseVehicle {
     protected String id;
     protected Integer x;

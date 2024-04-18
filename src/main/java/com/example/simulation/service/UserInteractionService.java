@@ -3,11 +3,17 @@ package com.example.simulation.service;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Represents a Car service in the application.
+ * This will provide functionality for managing user inputs information.
+ *
+ * @author Randika Isuru Vijayanga
+ * @version 1.0
+ */
 public interface UserInteractionService {
 
     /**
-     * Retrieves the user input form the console. This method will around with "InputValidationAspect".
-     * This method will handle all the Exceptions which will throwing from the InputValidationAspect.
+     * Retrieves the user input from the console. This method will around with "InputValidationAspect".
      *
      * @param text The message which display to user.
      * @param scanner To get the input from user.

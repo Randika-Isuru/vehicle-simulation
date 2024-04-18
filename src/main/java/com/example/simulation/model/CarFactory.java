@@ -1,7 +1,5 @@
 package com.example.simulation.model;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Represents a Car Factory in the application.
  * This will provide functionality for create varies type of car object.
@@ -9,7 +7,7 @@ import org.springframework.stereotype.Component;
  * @author Randika Isuru Vijayanga
  * @version 1.0
  */
-@Component
+
 public class CarFactory {
     /**
      * Retrieves the final car object.

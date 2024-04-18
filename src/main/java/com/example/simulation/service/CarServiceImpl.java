@@ -5,12 +5,10 @@ import com.example.simulation.model.BaseVehicle;
 import com.example.simulation.model.Car;
 import com.example.simulation.model.CarFactory;
 import com.example.simulation.model.Direction;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
 public class CarServiceImpl implements CarService {
     private Car myCar;
     private final CarFactory carFactory;

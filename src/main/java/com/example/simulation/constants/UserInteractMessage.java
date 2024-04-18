@@ -6,7 +6,7 @@ public class UserInteractMessage {
     public static final String GET_CAR_ID_MESSAGE = "Enter car Id :  ";
     public static final String GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE = "Enter current position and facing direction of the car : ";
     public static final String GET_MOVE_COMMANDS_MESSAGE = "Enter car move commands : ";
-    public static final String GET_CAR_ID_OR_EXIT_MESSAGE = "Enter car Id : ( or enter 'move' to drive your vehicle) ";
+    public static final String GET_CAR_ID_OR_EXIT_MESSAGE = "Enter car Id : ( or type 'move' and hit Enter button to drive your vehicle) ";
 
     public static final String MULTIPLE_VEHICLE_MOVE_WITHOUT_COLLISION_SUCCESS_MESSAGE = "no collision";
 
@@ -18,12 +18,5 @@ public class UserInteractMessage {
     public static final String INVALID_INPUT_ERROR_MESSAGE = "Invalid input : ";
     public static final String UNEXPECTED_RESULT_TYPE_ERROR_MESSAGE = "Unexpected result type: ";
     public static final String PLEASE_TRY_AGAIN_ERROR_MESSAGE = "Please try again with correct input fields";
-
-
-
-
-
-
-
 
 }
