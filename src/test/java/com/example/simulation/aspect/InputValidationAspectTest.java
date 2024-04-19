@@ -61,6 +61,34 @@ class InputValidationAspectTest {
     }
 
     @Test
+    public void testUserInputWidthAndHeight_HeightInvalidInputMaxValue() {
+        String key = null;
+        Map<String, String[]> sourceMap = new HashMap<>();
+        String[] sourceArray = {"10", "100001"};
+        sourceMap.put(UserInteractMessage.GET_WIDTH_AND_HEIGHT_MESSAGE, sourceArray);
+        Map<String, String[]> resultMap = inputValidationAspect.interceptScannerNextLine(sourceMap);
+        if (!resultMap.isEmpty()) {
+            Map.Entry<String, String[]> entry = resultMap.entrySet().iterator().next();
+            key = entry.getKey();
+        }
+        assertEquals(ASSERT_FALSE, key);
+    }
+
+    @Test
+    public void testUserInputWidthAndHeight_WidthInvalidInputMaxValue() {
+        String key = null;
+        Map<String, String[]> sourceMap = new HashMap<>();
+        String[] sourceArray = {"100001", "10"};
+        sourceMap.put(UserInteractMessage.GET_WIDTH_AND_HEIGHT_MESSAGE, sourceArray);
+        Map<String, String[]> resultMap = inputValidationAspect.interceptScannerNextLine(sourceMap);
+        if (!resultMap.isEmpty()) {
+            Map.Entry<String, String[]> entry = resultMap.entrySet().iterator().next();
+            key = entry.getKey();
+        }
+        assertEquals(ASSERT_FALSE, key);
+    }
+
+    @Test
     public void testUserInputWidthAndHeight_HeightInvalidInputLetterValue() {
         String key = null;
         Map<String, String[]> sourceMap = new HashMap<>();
@@ -146,6 +174,34 @@ class InputValidationAspectTest {
 
     @Test
     public void testUserInputCurrentPositionAndFacingDirection_YPositionInvalidInputMinusValue() {
+        String key = null;
+        Map<String, String[]> sourceMap = new HashMap<>();
+        String[] sourceArray = {"10", "-10", "N"};
+        sourceMap.put(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE, sourceArray);
+        Map<String, String[]> resultMap = inputValidationAspect.interceptScannerNextLine(sourceMap);
+        if (!resultMap.isEmpty()) {
+            Map.Entry<String, String[]> entry = resultMap.entrySet().iterator().next();
+            key = entry.getKey();
+        }
+        assertEquals(ASSERT_FALSE, key);
+    }
+
+    @Test
+    public void testUserInputCurrentPositionAndFacingDirection_XPositionInvalidInputMaxValue() {
+        String key = null;
+        Map<String, String[]> sourceMap = new HashMap<>();
+        String[] sourceArray = {"-10", "10", "N"};
+        sourceMap.put(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE, sourceArray);
+        Map<String, String[]> resultMap = inputValidationAspect.interceptScannerNextLine(sourceMap);
+        if (!resultMap.isEmpty()) {
+            Map.Entry<String, String[]> entry = resultMap.entrySet().iterator().next();
+            key = entry.getKey();
+        }
+        assertEquals(ASSERT_FALSE, key);
+    }
+
+    @Test
+    public void testUserInputCurrentPositionAndFacingDirection_YPositionInvalidInputMaxValue() {
         String key = null;
         Map<String, String[]> sourceMap = new HashMap<>();
         String[] sourceArray = {"10", "-10", "N"};

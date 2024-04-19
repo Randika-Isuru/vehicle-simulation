@@ -10,9 +10,9 @@ public class UserInteractMessage {
 
     public static final String MULTIPLE_VEHICLE_MOVE_WITHOUT_COLLISION_SUCCESS_MESSAGE = "no collision";
 
-    public static final String GET_WIDTH_AND_HEIGHT_ERROR_MESSAGE = "Please enter only 2 positive numbers separate with space";
+    public static final String GET_WIDTH_AND_HEIGHT_ERROR_MESSAGE = "Please enter only 2 positive numbers ( Below 100000 ) separate with space";
     public static final String GET_CAR_ID_ERROR_MESSAGE = "Please enter single word to identify the vehicle";
-    public static final String GET_CURRENT_POSITION_AND_FACING_DIRECTION_ERROR_MESSAGE = "Please enter only 2 positive numbers separated by a space, and indicate direction with a single character: N, E, S, or W.";
+    public static final String GET_CURRENT_POSITION_AND_FACING_DIRECTION_ERROR_MESSAGE = "Please enter only 2 positive numbers ( Below 100000 ) separated by a space, and indicate direction with a single character: N, E, S, or W.";
     public static final String GET_MOVE_COMMANDS_ERROR_MESSAGE = "Please enter valid command only combination of following characters F, R, L";
     public static final String GET_CAR_ID_OR_EXIT_ERROR_MESSAGE = "Please enter single word to identify the vehicle or type (move) to execute the programme";
     public static final String INVALID_INPUT_ERROR_MESSAGE = "Invalid input : ";

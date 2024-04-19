@@ -9,6 +9,17 @@ Make sure you have the following installed:
 - Java 17 JDK or later
 - Apache Maven
 
+## Run Tests
+
+1. Open a terminal or command prompt.
+2. Navigate to the root directory of the project.
+3. Run the following command:
+
+```bash
+mvn test
+```
+
+
 ## Build
 
 To build the project, follow these steps:
@@ -58,4 +69,6 @@ inputs to simulate vehicle behavior. Here's how the interaction flows:
 
 If the user types 'move', the application executes the commands for the vehicle and show final output and exit the program, allowing the user to input data for another vehicle or continue driving the same vehicle with new commands. If the user provides another car Id, the process repeats from step 3.
 
+## Note
 This interactive mode allows users to simulate the behavior of multiple vehicles within the defined field by providing inputs and observing the results.
+Please note currently this program allow only 2 vehicles for parallel running.

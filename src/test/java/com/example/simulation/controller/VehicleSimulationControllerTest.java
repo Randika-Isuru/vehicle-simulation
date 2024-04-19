@@ -65,8 +65,6 @@ class VehicleSimulationControllerTest {
         commandsB = "FFLFFFFFFF";
     }
 
-
-
     @Test
     public void testMoveCar(){
 

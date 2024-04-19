@@ -81,6 +81,9 @@ public class VehicleSimulationController {
             for (String[] values : inputs.values()){
                 carId = values[0];
             }
+            int index = 0;
+            int maxIterations = 2;
+            int counter = 0;
             withHere:
             do {
                 continueOrLoop = false;
@@ -113,6 +116,10 @@ public class VehicleSimulationController {
                     commands = values[0];
                 }
                 carData.put(carId, new Car(carId, initialX, initialY, initialDirection, commands));
+                counter++;
+                if (counter >= maxIterations) {
+                    break;
+                }
                 inputs = userInteractionService.getUserInputs(UserInteractMessage.GET_CAR_ID_OR_EXIT_MESSAGE, scanner);
                 for (Map.Entry<String, String[]> entry : inputs.entrySet()) {
                     String key = entry.getKey();
@@ -124,7 +131,7 @@ public class VehicleSimulationController {
                 for (String[] values : inputs.values()){
                     carId = values[0];
                 }
-            } while (!"move".equalsIgnoreCase(carId));
+            } while (!"move".equalsIgnoreCase(carId) && index < maxIterations);
         } catch (Exception ex){
             System.out.println(UserInteractMessage.PLEASE_TRY_AGAIN_ERROR_MESSAGE);
         }
