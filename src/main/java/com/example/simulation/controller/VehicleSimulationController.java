@@ -81,7 +81,6 @@ public class VehicleSimulationController {
             for (String[] values : inputs.values()){
                 carId = values[0];
             }
-            int index = 0;
             int maxIterations = 2;
             int counter = 0;
             withHere:
@@ -131,7 +130,7 @@ public class VehicleSimulationController {
                 for (String[] values : inputs.values()){
                     carId = values[0];
                 }
-            } while (!"move".equalsIgnoreCase(carId) && index < maxIterations);
+            } while (!"move".equalsIgnoreCase(carId));
         } catch (Exception ex){
             System.out.println(UserInteractMessage.PLEASE_TRY_AGAIN_ERROR_MESSAGE);
         }

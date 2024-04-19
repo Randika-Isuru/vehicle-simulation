@@ -190,7 +190,7 @@ class InputValidationAspectTest {
     public void testUserInputCurrentPositionAndFacingDirection_XPositionInvalidInputMaxValue() {
         String key = null;
         Map<String, String[]> sourceMap = new HashMap<>();
-        String[] sourceArray = {"-10", "10", "N"};
+        String[] sourceArray = {"100001", "10", "N"};
         sourceMap.put(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE, sourceArray);
         Map<String, String[]> resultMap = inputValidationAspect.interceptScannerNextLine(sourceMap);
         if (!resultMap.isEmpty()) {
@@ -204,7 +204,7 @@ class InputValidationAspectTest {
     public void testUserInputCurrentPositionAndFacingDirection_YPositionInvalidInputMaxValue() {
         String key = null;
         Map<String, String[]> sourceMap = new HashMap<>();
-        String[] sourceArray = {"10", "-10", "N"};
+        String[] sourceArray = {"10", "100001", "N"};
         sourceMap.put(UserInteractMessage.GET_CURRENT_POSITION_AND_FACING_DIRECTION_MESSAGE, sourceArray);
         Map<String, String[]> resultMap = inputValidationAspect.interceptScannerNextLine(sourceMap);
         if (!resultMap.isEmpty()) {
